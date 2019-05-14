@@ -24,26 +24,26 @@ sched=BlockingScheduler()
 
 #function to send quotes using sendgrid 
 def send_quotes():
-    sg = sendgrid.SendGridAPIClient(os.environ.get("fess"))
-    data={"personalizations":[{
-            "to":[{"email":"pelumi085@gmail.com"}],
-            "subject":"qutoes"},
+    sg = sendgrid.SendGridAPIClient(os.environ.get("fess")) #get your api key from the os environment.using your apikey name.mine is "fess"
+    data = {"personalizations":[{
+            "to":[{"email":"example1@gmail.com"}],
+            "subject":"quotes"},
                 
-            {"to":[{"email":"dammy025@gmail.com"}],
+            {"to":[{"email":"example2@gmail.com"}],
             "subject":"quotes"},
-            {"to":[{"email":"chisomokafor1999@gmail.com"}],
+            {"to":[{"email":"example3@gmail.com"}],
             "subject":"quotes"},
-            {"to":[{"email":"dowolebolu@gmail.com"}],
+            {"to":[{"email":"example4@gmail.com"}],
             "subject":"quotes"}],
-            "from":{"email":"olalekantemitayo7@gmail.com"},
+            "from":{"email":"youremail@gmail.com"},
             "content":[{"type":"text/plain","value":quotes()}]
             }
     try:
         response = sg.client.mail.send.post(request_body=data)
-        if response.status_code==202:
+        if response.status_code == 202:
             print("Message sent")
         else:
-            print("Message not sent")
+            print("Message  not sent")
     except:
         print("Connection error")
     
